@@ -1,0 +1,11 @@
+/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/obj/Debug/net8.0/ModularMonolith.Shared.Abstractions.GeneratedMSBuildEditorConfig.editorconfig
+/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/obj/Debug/net8.0/ModularMonolith.Shared.Abstractions.AssemblyInfoInputs.cache
+/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/obj/Debug/net8.0/ModularMonolith.Shared.Abstractions.AssemblyInfo.cs
+/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/obj/Debug/net8.0/ModularMonolith.Shared.Abstractions.csproj.CoreCompileInputs.cache
+/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/bin/Debug/net8.0/ModularMonolith.Shared.Abstractions.deps.json
+/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/bin/Debug/net8.0/ModularMonolith.Shared.Abstractions.dll
+/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/bin/Debug/net8.0/ModularMonolith.Shared.Abstractions.pdb
+/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/obj/Debug/net8.0/ModularMonolith.Shared.Abstractions.dll
+/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/obj/Debug/net8.0/refint/ModularMonolith.Shared.Abstractions.dll
+/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/obj/Debug/net8.0/ModularMonolith.Shared.Abstractions.pdb
+/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/obj/Debug/net8.0/ref/ModularMonolith.Shared.Abstractions.dll
