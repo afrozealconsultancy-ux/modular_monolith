@@ -5,7 +5,16 @@
   },
   "libraries": {},
   "projectFileDependencyGroups": {
-    "net8.0": []
+    "net8.0": [
+      "MassTransit.RabbitMQ >= 8.2.5",
+      "MediatR >= 12.4.1",
+      "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.11",
+      "Microsoft.EntityFrameworkCore >= 8.0.11",
+      "Microsoft.EntityFrameworkCore.Relational >= 8.0.11",
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 8.0.10",
+      "Polly >= 8.4.2",
+      "Serilog.AspNetCore >= 8.0.3"
+    ]
   },
   "packageFolders": {
     "/root/.nuget/packages/": {}
@@ -31,7 +40,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/ModularMonolith.Shared.Abstractions.csproj": {
+              "projectPath": "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/ModularMonolith.Shared.Abstractions.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -48,6 +61,40 @@
     "frameworks": {
       "net8.0": {
         "targetAlias": "net8.0",
+        "dependencies": {
+          "MassTransit.RabbitMQ": {
+            "target": "Package",
+            "version": "[8.2.5, )"
+          },
+          "MediatR": {
+            "target": "Package",
+            "version": "[12.4.1, )"
+          },
+          "Microsoft.AspNetCore.Authentication.JwtBearer": {
+            "target": "Package",
+            "version": "[8.0.11, )"
+          },
+          "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[8.0.11, )"
+          },
+          "Microsoft.EntityFrameworkCore.Relational": {
+            "target": "Package",
+            "version": "[8.0.11, )"
+          },
+          "Npgsql.EntityFrameworkCore.PostgreSQL": {
+            "target": "Package",
+            "version": "[8.0.10, )"
+          },
+          "Polly": {
+            "target": "Package",
+            "version": "[8.4.2, )"
+          },
+          "Serilog.AspNetCore": {
+            "target": "Package",
+            "version": "[8.0.3, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
@@ -60,6 +107,9 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
@@ -67,5 +117,13 @@
         "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Unable to load the service index for source https://api.nuget.org/v3/index.json.",
+      "libraryId": "Microsoft.EntityFrameworkCore"
+    }
+  ]
 }
