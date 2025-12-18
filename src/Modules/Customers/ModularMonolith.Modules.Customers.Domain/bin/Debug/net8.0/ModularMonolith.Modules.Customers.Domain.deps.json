@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ModularMonolith.Modules.Customers.Domain/1.0.0": {
+        "dependencies": {
+          "ModularMonolith.Shared.Abstractions": "1.0.0"
+        },
+        "runtime": {
+          "ModularMonolith.Modules.Customers.Domain.dll": {}
+        }
+      },
+      "ModularMonolith.Shared.Abstractions/1.0.0": {
+        "runtime": {
+          "ModularMonolith.Shared.Abstractions.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ModularMonolith.Modules.Customers.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ModularMonolith.Shared.Abstractions/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

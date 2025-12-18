@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "dhxLrXBjcLE=",
-  "success": true,
+  "dgSpecHash": "ueLsaPOZGbc=",
+  "success": false,
   "projectFilePath": "/home/user/modular_monolith/src/Modules/Customers/ModularMonolith.Modules.Customers.Application/ModularMonolith.Modules.Customers.Application.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Unable to load the service index for source https://api.nuget.org/v3/index.json.",
+      "libraryId": "MediatR"
+    }
+  ]
 }

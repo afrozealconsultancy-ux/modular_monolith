@@ -1,0 +1,15 @@
+/home/user/modular_monolith/src/Modules/Customers/ModularMonolith.Modules.Customers.Domain/bin/Debug/net8.0/ModularMonolith.Modules.Customers.Domain.deps.json
+/home/user/modular_monolith/src/Modules/Customers/ModularMonolith.Modules.Customers.Domain/bin/Debug/net8.0/ModularMonolith.Modules.Customers.Domain.dll
+/home/user/modular_monolith/src/Modules/Customers/ModularMonolith.Modules.Customers.Domain/bin/Debug/net8.0/ModularMonolith.Modules.Customers.Domain.pdb
+/home/user/modular_monolith/src/Modules/Customers/ModularMonolith.Modules.Customers.Domain/bin/Debug/net8.0/ModularMonolith.Shared.Abstractions.dll
+/home/user/modular_monolith/src/Modules/Customers/ModularMonolith.Modules.Customers.Domain/bin/Debug/net8.0/ModularMonolith.Shared.Abstractions.pdb
+/home/user/modular_monolith/src/Modules/Customers/ModularMonolith.Modules.Customers.Domain/obj/Debug/net8.0/ModularMonolith.Modules.Customers.Domain.csproj.AssemblyReference.cache
+/home/user/modular_monolith/src/Modules/Customers/ModularMonolith.Modules.Customers.Domain/obj/Debug/net8.0/ModularMonolith.Modules.Customers.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/user/modular_monolith/src/Modules/Customers/ModularMonolith.Modules.Customers.Domain/obj/Debug/net8.0/ModularMonolith.Modules.Customers.Domain.AssemblyInfoInputs.cache
+/home/user/modular_monolith/src/Modules/Customers/ModularMonolith.Modules.Customers.Domain/obj/Debug/net8.0/ModularMonolith.Modules.Customers.Domain.AssemblyInfo.cs
+/home/user/modular_monolith/src/Modules/Customers/ModularMonolith.Modules.Customers.Domain/obj/Debug/net8.0/ModularMonolith.Modules.Customers.Domain.csproj.CoreCompileInputs.cache
+/home/user/modular_monolith/src/Modules/Customers/ModularMonolith.Modules.Customers.Domain/obj/Debug/net8.0/ModularM.7B24F508.Up2Date
+/home/user/modular_monolith/src/Modules/Customers/ModularMonolith.Modules.Customers.Domain/obj/Debug/net8.0/ModularMonolith.Modules.Customers.Domain.dll
+/home/user/modular_monolith/src/Modules/Customers/ModularMonolith.Modules.Customers.Domain/obj/Debug/net8.0/refint/ModularMonolith.Modules.Customers.Domain.dll
+/home/user/modular_monolith/src/Modules/Customers/ModularMonolith.Modules.Customers.Domain/obj/Debug/net8.0/ModularMonolith.Modules.Customers.Domain.pdb
+/home/user/modular_monolith/src/Modules/Customers/ModularMonolith.Modules.Customers.Domain/obj/Debug/net8.0/ref/ModularMonolith.Modules.Customers.Domain.dll
