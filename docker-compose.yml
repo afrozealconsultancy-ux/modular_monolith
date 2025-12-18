@@ -1,0 +1,298 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: modular-monolith-postgres
+    environment:
+      POSTGRES_DB: modular_monolith
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - modular-monolith
+
+  # RabbitMQ Message Broker
+  rabbitmq:
+    image: rabbitmq:3.12-management-alpine
+    container_name: modular-monolith-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - "5672:5672"   # AMQP port
+      - "15672:15672" # Management UI
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - modular-monolith
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: modular-monolith-redis
+    command: redis-server --appendonly yes
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - modular-monolith
+
+  # Keycloak Identity Provider
+  keycloak:
+    image: quay.io/keycloak/keycloak:23.0
+    container_name: modular-monolith-keycloak
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
+      KC_DB_USERNAME: postgres
+      KC_DB_PASSWORD: postgres
+      KC_HOSTNAME: localhost
+      KC_HTTP_ENABLED: "true"
+      KC_HEALTH_ENABLED: "true"
+    command:
+      - start-dev
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "exec 3<>/dev/tcp/127.0.0.1/8080;echo -e \"GET /health/ready HTTP/1.1\r\nhost: 127.0.0.1:8080\r\nConnection: close\r\n\r\n\" >&3;grep \"HTTP/1.1 200 OK\" <&3"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - modular-monolith
+
+  # SeaweedFS Master
+  seaweedfs-master:
+    image: chrislusf/seaweedfs:latest
+    container_name: modular-monolith-seaweedfs-master
+    command: master -ip=seaweedfs-master -port=9333
+    ports:
+      - "9333:9333"
+    volumes:
+      - seaweedfs_master_data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:9333/cluster/status || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - modular-monolith
+
+  # SeaweedFS Volume Server
+  seaweedfs-volume:
+    image: chrislusf/seaweedfs:latest
+    container_name: modular-monolith-seaweedfs-volume
+    command: volume -mserver=seaweedfs-master:9333 -port=8080 -ip=seaweedfs-volume
+    ports:
+      - "8081:8080"
+    depends_on:
+      seaweedfs-master:
+        condition: service_healthy
+    volumes:
+      - seaweedfs_volume_data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:8080/status || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - modular-monolith
+
+  # SeaweedFS Filer
+  seaweedfs-filer:
+    image: chrislusf/seaweedfs:latest
+    container_name: modular-monolith-seaweedfs-filer
+    command: filer -master=seaweedfs-master:9333 -ip=seaweedfs-filer -port=8888
+    ports:
+      - "8888:8888"
+    depends_on:
+      seaweedfs-master:
+        condition: service_healthy
+    volumes:
+      - seaweedfs_filer_data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:8888/healthz || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - modular-monolith
+
+  # ClamAV Antivirus
+  clamav:
+    image: clamav/clamav:latest
+    container_name: modular-monolith-clamav
+    ports:
+      - "3310:3310"
+    volumes:
+      - clamav_data:/var/lib/clamav
+    environment:
+      CLAMAV_NO_FRESHCLAM: "false"
+    healthcheck:
+      test: ["CMD", "/usr/local/bin/clamdcheck.sh"]
+      interval: 60s
+      timeout: 10s
+      retries: 5
+      start_period: 300s  # ClamAV takes time to download virus definitions
+    networks:
+      - modular-monolith
+
+  # Seq Log Aggregation
+  seq:
+    image: datalust/seq:latest
+    container_name: modular-monolith-seq
+    environment:
+      ACCEPT_EULA: "Y"
+    ports:
+      - "5341:80"
+      - "5342:5341"
+    volumes:
+      - seq_data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:80/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - modular-monolith
+
+  # Prometheus Metrics
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: modular-monolith-prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:9090/-/healthy || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - modular-monolith
+
+  # Grafana Dashboards
+  grafana:
+    image: grafana/grafana:latest
+    container_name: modular-monolith-grafana
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_INSTALL_PLUGINS: grafana-clock-panel
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    depends_on:
+      - prometheus
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:3000/api/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - modular-monolith
+
+  # Jaeger Tracing (Optional - for OpenTelemetry)
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: modular-monolith-jaeger
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true"
+    ports:
+      - "5775:5775/udp"   # Zipkin compact
+      - "6831:6831/udp"   # Jaeger compact
+      - "6832:6832/udp"   # Jaeger binary
+      - "5778:5778"       # Serve configs
+      - "16686:16686"     # UI
+      - "14268:14268"     # HTTP collector
+      - "14250:14250"     # gRPC collector
+      - "9411:9411"       # Zipkin
+      - "4317:4317"       # OTLP gRPC
+      - "4318:4318"       # OTLP HTTP
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:14269/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - modular-monolith
+
+  # pgAdmin (Optional - Database Management UI)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: modular-monolith-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@modularmonolith.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    networks:
+      - modular-monolith
+
+volumes:
+  postgres_data:
+    driver: local
+  rabbitmq_data:
+    driver: local
+  redis_data:
+    driver: local
+  seaweedfs_master_data:
+    driver: local
+  seaweedfs_volume_data:
+    driver: local
+  seaweedfs_filer_data:
+    driver: local
+  clamav_data:
+    driver: local
+  seq_data:
+    driver: local
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+  pgadmin_data:
+    driver: local
+
+networks:
+  modular-monolith:
+    driver: bridge
+    name: modular-monolith-network
