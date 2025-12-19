@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ueLsaPOZGbc=",
+  "dgSpecHash": "t2ev2m+PM2s=",
   "success": false,
   "projectFilePath": "/home/user/modular_monolith/src/Modules/Customers/ModularMonolith.Modules.Customers.Application/ModularMonolith.Modules.Customers.Application.csproj",
   "expectedPackageFiles": [],
@@ -9,7 +9,13 @@
       "code": "NU1301",
       "level": "Error",
       "message": "Unable to load the service index for source https://api.nuget.org/v3/index.json.",
-      "libraryId": "MediatR"
+      "libraryId": "FluentValidation"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Unable to load the service index for source https://api.nuget.org/v3/index.json.",
+      "libraryId": "Microsoft.Extensions.DependencyInjection.Abstractions"
     }
   ]
 }

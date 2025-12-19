@@ -14,6 +14,7 @@
         "outputPath": "/home/user/modular_monolith/src/Modules/Customers/ModularMonolith.Modules.Customers.Application/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
+          "/home/user/modular_monolith/NuGet.Config",
           "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -89,6 +90,7 @@
         "outputPath": "/home/user/modular_monolith/src/Modules/Customers/ModularMonolith.Modules.Customers.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
+          "/home/user/modular_monolith/NuGet.Config",
           "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -151,6 +153,7 @@
         "outputPath": "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
+          "/home/user/modular_monolith/NuGet.Config",
           "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [

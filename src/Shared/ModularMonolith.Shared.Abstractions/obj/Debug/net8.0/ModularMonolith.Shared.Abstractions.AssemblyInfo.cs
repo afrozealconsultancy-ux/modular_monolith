@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ModularMonolith.Shared.Abstractions")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a98d82a76d3376f3ac029bd04fa2a1af1b39672")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b988d50f653770bdf0a2e925ce54842335207e98")]
 [assembly: System.Reflection.AssemblyProductAttribute("ModularMonolith.Shared.Abstractions")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ModularMonolith.Shared.Abstractions")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

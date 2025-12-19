@@ -42,6 +42,7 @@
       "outputPath": "/home/user/modular_monolith/src/Modules/Customers/ModularMonolith.Modules.Customers.Domain/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
+        "/home/user/modular_monolith/NuGet.Config",
         "/root/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
