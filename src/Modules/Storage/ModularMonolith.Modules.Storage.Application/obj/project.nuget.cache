@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "shNfsT6xaiY=",
-  "success": true,
+  "dgSpecHash": "bUBTjj4aaKU=",
+  "success": false,
   "projectFilePath": "/home/user/modular_monolith/src/Modules/Storage/ModularMonolith.Modules.Storage.Application/ModularMonolith.Modules.Storage.Application.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Unable to load the service index for source https://api.nuget.org/v3/index.json.",
+      "libraryId": "Microsoft.Extensions.DependencyInjection.Abstractions"
+    }
+  ]
 }

@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ModularMonolith.Modules.Storage.Domain\ModularMonolith.Modules.Storage.Domain.csproj" />
+    <ProjectReference Include="..\ModularMonolith.Modules.Storage.Contracts\ModularMonolith.Modules.Storage.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\Shared\ModularMonolith.Shared.Abstractions\ModularMonolith.Shared.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.4.1" />
+  </ItemGroup>
+
 </Project>

@@ -4,6 +4,207 @@
     "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Infrastructure/ModularMonolith.Modules.Notifications.Infrastructure.csproj": {}
   },
   "projects": {
+    "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Application/ModularMonolith.Modules.Notifications.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Application/ModularMonolith.Modules.Notifications.Application.csproj",
+        "projectName": "ModularMonolith.Modules.Notifications.Application",
+        "projectPath": "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Application/ModularMonolith.Modules.Notifications.Application.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/user/modular_monolith/NuGet.Config",
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Contracts/ModularMonolith.Modules.Notifications.Contracts.csproj": {
+                "projectPath": "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Contracts/ModularMonolith.Modules.Notifications.Contracts.csproj"
+              },
+              "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Domain/ModularMonolith.Modules.Notifications.Domain.csproj": {
+                "projectPath": "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Domain/ModularMonolith.Modules.Notifications.Domain.csproj"
+              },
+              "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/ModularMonolith.Shared.Abstractions.csproj": {
+                "projectPath": "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/ModularMonolith.Shared.Abstractions.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.4.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Contracts/ModularMonolith.Modules.Notifications.Contracts.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Contracts/ModularMonolith.Modules.Notifications.Contracts.csproj",
+        "projectName": "ModularMonolith.Modules.Notifications.Contracts",
+        "projectPath": "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Contracts/ModularMonolith.Modules.Notifications.Contracts.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Contracts/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/user/modular_monolith/NuGet.Config",
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/ModularMonolith.Shared.Abstractions.csproj": {
+                "projectPath": "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/ModularMonolith.Shared.Abstractions.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Domain/ModularMonolith.Modules.Notifications.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Domain/ModularMonolith.Modules.Notifications.Domain.csproj",
+        "projectName": "ModularMonolith.Modules.Notifications.Domain",
+        "projectPath": "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Domain/ModularMonolith.Modules.Notifications.Domain.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/user/modular_monolith/NuGet.Config",
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/ModularMonolith.Shared.Abstractions.csproj": {
+                "projectPath": "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/ModularMonolith.Shared.Abstractions.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Infrastructure/ModularMonolith.Modules.Notifications.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -14,6 +215,110 @@
         "outputPath": "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Infrastructure/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
+          "/home/user/modular_monolith/NuGet.Config",
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Application/ModularMonolith.Modules.Notifications.Application.csproj": {
+                "projectPath": "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Application/ModularMonolith.Modules.Notifications.Application.csproj"
+              },
+              "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Contracts/ModularMonolith.Modules.Notifications.Contracts.csproj": {
+                "projectPath": "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Contracts/ModularMonolith.Modules.Notifications.Contracts.csproj"
+              },
+              "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Domain/ModularMonolith.Modules.Notifications.Domain.csproj": {
+                "projectPath": "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Domain/ModularMonolith.Modules.Notifications.Domain.csproj"
+              },
+              "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/ModularMonolith.Shared.Abstractions.csproj": {
+                "projectPath": "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/ModularMonolith.Shared.Abstractions.csproj"
+              },
+              "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Infrastructure/ModularMonolith.Shared.Infrastructure.csproj": {
+                "projectPath": "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Infrastructure/ModularMonolith.Shared.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "MassTransit": {
+              "target": "Package",
+              "version": "[8.2.5, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.4.1, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[8.0.11, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/ModularMonolith.Shared.Abstractions.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/ModularMonolith.Shared.Abstractions.csproj",
+        "projectName": "ModularMonolith.Shared.Abstractions",
+        "projectPath": "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/ModularMonolith.Shared.Abstractions.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/user/modular_monolith/NuGet.Config",
           "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -54,6 +359,109 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Infrastructure/ModularMonolith.Shared.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Infrastructure/ModularMonolith.Shared.Infrastructure.csproj",
+        "projectName": "ModularMonolith.Shared.Infrastructure",
+        "projectPath": "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Infrastructure/ModularMonolith.Shared.Infrastructure.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/user/modular_monolith/NuGet.Config",
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/ModularMonolith.Shared.Abstractions.csproj": {
+                "projectPath": "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/ModularMonolith.Shared.Abstractions.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "MassTransit.RabbitMQ": {
+              "target": "Package",
+              "version": "[8.2.5, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.4.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[8.0.11, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[8.4.2, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

@@ -2,6 +2,8 @@ using ModularMonolith.Shared.Abstractions.Modules;
 using ModularMonolith.Shared.Infrastructure.Extensions;
 using ModularMonolith.Shared.Infrastructure.Middleware;
 using ModularMonolith.Modules.Customers.Infrastructure;
+using ModularMonolith.Modules.Storage.Infrastructure;
+using ModularMonolith.Modules.Notifications.Infrastructure;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -138,10 +140,10 @@ static List<IModule> DiscoverModules()
     return new List<IModule>
     {
         new CustomersModule(),
+        new StorageModule(),
+        new NotificationsModule(),
         // Add other modules here as they're built:
         // new IdentityModule(),
-        // new StorageModule(),
-        // new NotificationsModule(),
         // new OrdersModule(),
         // new CatalogModule(),
     };

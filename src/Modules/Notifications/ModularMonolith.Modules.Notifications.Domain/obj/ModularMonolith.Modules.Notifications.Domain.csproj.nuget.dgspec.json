@@ -14,6 +14,70 @@
         "outputPath": "/home/user/modular_monolith/src/Modules/Notifications/ModularMonolith.Modules.Notifications.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
+          "/home/user/modular_monolith/NuGet.Config",
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/ModularMonolith.Shared.Abstractions.csproj": {
+                "projectPath": "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/ModularMonolith.Shared.Abstractions.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/ModularMonolith.Shared.Abstractions.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/ModularMonolith.Shared.Abstractions.csproj",
+        "projectName": "ModularMonolith.Shared.Abstractions",
+        "projectPath": "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/ModularMonolith.Shared.Abstractions.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/home/user/modular_monolith/src/Shared/ModularMonolith.Shared.Abstractions/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/user/modular_monolith/NuGet.Config",
           "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
@@ -54,6 +118,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

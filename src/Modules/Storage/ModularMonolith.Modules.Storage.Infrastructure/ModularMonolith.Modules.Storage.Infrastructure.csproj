@@ -6,4 +6,24 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ModularMonolith.Modules.Storage.Domain\ModularMonolith.Modules.Storage.Domain.csproj" />
+    <ProjectReference Include="..\ModularMonolith.Modules.Storage.Application\ModularMonolith.Modules.Storage.Application.csproj" />
+    <ProjectReference Include="..\ModularMonolith.Modules.Storage.Contracts\ModularMonolith.Modules.Storage.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\Shared\ModularMonolith.Shared.Abstractions\ModularMonolith.Shared.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\Shared\ModularMonolith.Shared.Infrastructure\ModularMonolith.Shared.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.11" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="MassTransit" Version="8.2.5" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
+  </ItemGroup>
+
 </Project>
