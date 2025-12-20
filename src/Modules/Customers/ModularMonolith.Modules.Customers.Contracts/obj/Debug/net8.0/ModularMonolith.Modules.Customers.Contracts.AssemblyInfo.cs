@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ModularMonolith.Modules.Customers.Contracts")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b988d50f653770bdf0a2e925ce54842335207e98")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ba80ac6dd9830caf12e73aeb4dedacff2b7712d2")]
 [assembly: System.Reflection.AssemblyProductAttribute("ModularMonolith.Modules.Customers.Contracts")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ModularMonolith.Modules.Customers.Contracts")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -4,7 +4,10 @@ using ModularMonolith.Shared.Abstractions.CQRS;
 namespace ModularMonolith.Modules.Notifications.Application.Commands.SendNotification;
 
 public sealed record SendNotificationCommand(
+    NotificationScope Scope,
     NotificationType Type,
-    string Recipient,
     string? Subject,
-    string Content) : ICommand<Result<Guid>>;
+    string Content,
+    List<Guid>? TargetTenantIds,        // For SelectedTenants scope
+    List<Guid>? TargetUserIds,          // For Personal scope
+    DateTime? ScheduledFor) : ICommand<Result<Guid>>;

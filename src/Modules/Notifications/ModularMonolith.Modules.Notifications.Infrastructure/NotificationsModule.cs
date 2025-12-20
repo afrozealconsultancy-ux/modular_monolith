@@ -5,14 +5,12 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ModularMonolith.Modules.Notifications.Application.Commands.MarkNotificationAsRead;
 using ModularMonolith.Modules.Notifications.Application.Commands.SendNotification;
-using ModularMonolith.Modules.Notifications.Application.Queries;
-using ModularMonolith.Modules.Notifications.Application.Queries.GetNotification;
-using ModularMonolith.Modules.Notifications.Application.Queries.GetNotifications;
+using ModularMonolith.Modules.Notifications.Application.Queries.GetUserNotifications;
 using ModularMonolith.Modules.Notifications.Application.Services;
 using ModularMonolith.Modules.Notifications.Domain.Repositories;
 using ModularMonolith.Modules.Notifications.Infrastructure.Persistence;
-using ModularMonolith.Modules.Notifications.Infrastructure.Persistence.Queries;
 using ModularMonolith.Modules.Notifications.Infrastructure.Persistence.Repositories;
 using ModularMonolith.Modules.Notifications.Infrastructure.Services;
 using ModularMonolith.Shared.Abstractions.Kernel;
@@ -33,9 +31,10 @@ public sealed class NotificationsModule : IModule
 
         // Repositories
         services.AddScoped<INotificationRepository, NotificationRepository>();
+        services.AddScoped<INotificationRecipientRepository, NotificationRecipientRepository>();
 
-        // Query Services
-        services.AddScoped<INotificationsQueryService, NotificationsQueryService>();
+        // Services
+        services.AddScoped<IUserNotificationService, UserNotificationService>();
 
         // Notification Senders (stubs for now)
         services.AddScoped<INotificationSender, EmailNotificationSender>();
@@ -51,9 +50,17 @@ public sealed class NotificationsModule : IModule
             .RequireAuthorization()
             .WithTags("Notifications");
 
-        group.MapPost("/send", SendNotification);
-        group.MapGet("/{id:guid}", GetNotification);
-        group.MapGet("/", GetNotifications);
+        group.MapPost("/send", SendNotification)
+            .WithName("SendNotification")
+            .WithDescription("Send a notification (supports Personal, Tenant, SelectedTenants, or AllTenants scope)");
+
+        group.MapGet("/my", GetMyNotifications)
+            .WithName("GetMyNotifications")
+            .WithDescription("Get notifications for the current user");
+
+        group.MapPost("/{id:guid}/read", MarkAsRead)
+            .WithName("MarkNotificationAsRead")
+            .WithDescription("Mark a notification as read");
     }
 
     public async Task InitializeAsync(IApplicationBuilder app)
@@ -75,32 +82,31 @@ public sealed class NotificationsModule : IModule
             : Results.BadRequest(result.Error);
     }
 
-    private static async Task<IResult> GetNotification(
+    private static async Task<IResult> GetMyNotifications(
+        IMediator mediator,
+        bool onlyUnread = false,
+        int pageNumber = 1,
+        int pageSize = 20,
+        CancellationToken cancellationToken = default)
+    {
+        var query = new GetUserNotificationsQuery(onlyUnread, pageNumber, pageSize);
+        var result = await mediator.Send(query, cancellationToken);
+
+        return result.IsSuccess
+            ? Results.Ok(result.Value)
+            : Results.BadRequest(result.Error);
+    }
+
+    private static async Task<IResult> MarkAsRead(
         Guid id,
         IMediator mediator,
         CancellationToken cancellationToken)
     {
-        var query = new GetNotificationQuery(id);
-        var result = await mediator.Send(query, cancellationToken);
+        var command = new MarkNotificationAsReadCommand(id);
+        var result = await mediator.Send(command, cancellationToken);
 
         return result.IsSuccess
-            ? Results.Ok(result.Value)
-            : Results.NotFound(result.Error);
-    }
-
-    private static async Task<IResult> GetNotifications(
-        IMediator mediator,
-        int page = 1,
-        int pageSize = 10,
-        string? type = null,
-        string? status = null,
-        CancellationToken cancellationToken = default)
-    {
-        var query = new GetNotificationsQuery(page, pageSize, type, status);
-        var result = await mediator.Send(query, cancellationToken);
-
-        return result.IsSuccess
-            ? Results.Ok(result.Value)
+            ? Results.Ok()
             : Results.BadRequest(result.Error);
     }
 }

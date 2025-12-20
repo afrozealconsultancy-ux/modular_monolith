@@ -18,6 +18,7 @@ public sealed class NotificationsDbContext : BaseDbContext, IUnitOfWork
     }
 
     public DbSet<Notification> Notifications => Set<Notification>();
+    public DbSet<NotificationRecipient> NotificationRecipients => Set<NotificationRecipient>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

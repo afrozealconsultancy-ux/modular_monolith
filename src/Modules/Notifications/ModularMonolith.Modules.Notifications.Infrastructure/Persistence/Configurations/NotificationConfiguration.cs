@@ -12,14 +12,15 @@ internal sealed class NotificationConfiguration : IEntityTypeConfiguration<Notif
 
         builder.HasKey(n => n.Id);
 
-        builder.Property(n => n.Type)
+        builder.Property(n => n.Scope)
             .IsRequired()
             .HasConversion<string>()
             .HasMaxLength(50);
 
-        builder.Property(n => n.Recipient)
+        builder.Property(n => n.Type)
             .IsRequired()
-            .HasMaxLength(500);
+            .HasConversion<string>()
+            .HasMaxLength(50);
 
         builder.Property(n => n.Subject)
             .HasMaxLength(500);
@@ -28,30 +29,41 @@ internal sealed class NotificationConfiguration : IEntityTypeConfiguration<Notif
             .IsRequired()
             .HasMaxLength(5000);
 
-        builder.Property(n => n.Status)
-            .IsRequired()
-            .HasConversion<string>()
-            .HasMaxLength(50);
+        builder.Property(n => n.CreatedByTenantId);
+
+        builder.Property(n => n.CreatedByUserId)
+            .IsRequired();
 
         builder.Property(n => n.CreatedAt)
             .IsRequired();
 
-        builder.Property(n => n.SentAt);
+        builder.Property(n => n.ScheduledFor);
 
-        builder.Property(n => n.FailureReason)
-            .HasMaxLength(1000);
-
-        builder.Property(n => n.RetryCount)
+        builder.Property(n => n.IsProcessed)
             .IsRequired();
 
-        builder.Property(n => n.TenantId)
-            .IsRequired();
+        builder.Property(n => n.ProcessedAt);
+
+        // Target Tenant IDs as JSON
+        builder.Property(n => n.TargetTenantIds)
+            .HasColumnType("jsonb")
+            .HasConversion(
+                v => System.Text.Json.JsonSerializer.Serialize(v, (System.Text.Json.JsonSerializerOptions?)null),
+                v => System.Text.Json.JsonSerializer.Deserialize<List<Guid>>(v, (System.Text.Json.JsonSerializerOptions?)null) ?? new List<Guid>());
+
+        // Recipients collection
+        builder.HasMany<NotificationRecipient>()
+            .WithOne(r => r.Notification)
+            .HasForeignKey(r => r.NotificationId)
+            .OnDelete(DeleteBehavior.Cascade);
 
         // Indexes
-        builder.HasIndex(n => n.TenantId);
+        builder.HasIndex(n => n.Scope);
         builder.HasIndex(n => n.Type);
-        builder.HasIndex(n => n.Status);
+        builder.HasIndex(n => n.CreatedByTenantId);
+        builder.HasIndex(n => n.CreatedByUserId);
         builder.HasIndex(n => n.CreatedAt);
-        builder.HasIndex(n => n.Recipient);
+        builder.HasIndex(n => n.IsProcessed);
+        builder.HasIndex(n => n.ScheduledFor);
     }
 }
